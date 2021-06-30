@@ -57,13 +57,21 @@ def equals(c1, c2):
 
     return c1 == c2
 #print(lcssimple("yeehaw", "yeea"))
+file1name = str(input("Starting file name: "))
+file2name =str(input("Ending file name: "))
+
 
 file1 = ""
-with open(str(input("Starting file name: ")), 'r') as source1 :
-  file1 = source1.read()
-  print(file1)
 file2 = ""
-with open(str(input("Ending file name: ")), 'r') as source1 :
-  file2 = source1.read()
+print("---file1---")
+with open(file1name, 'r') as source :
+  file1 = source.read()
+  print(file1)
+print("---file2---")
+with open(file2name, 'r') as source :
+  file2 = source.read()
   print(file2)
 
+output = "testing testing"
+with open(file1name + " and " + file2name + " diff", 'x') as outfile :
+  outfile.write(output)
