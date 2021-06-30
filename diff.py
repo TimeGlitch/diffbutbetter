@@ -47,7 +47,8 @@ def minimaldiff(e, f, i=0, j=0):
   else:
     return [{"operation": "insert", "position_old": i,"position_new":j+n} for n in range(0,M)]
 
-def patiencediff(text1, text2)
+def patiencediff(text1, text2):
+  print("WIP")
 
 def testing():
     print("yep")
@@ -55,5 +56,14 @@ def testing():
 def equals(c1, c2):
 
     return c1 == c2
-print(lcssimple("yeehaw", "yeea"))
+#print(lcssimple("yeehaw", "yeea"))
+
+file1 = ""
+with open(str(input("Starting file name: ")), 'r') as source1 :
+  file1 = source1.read()
+  print(file1)
+file2 = ""
+with open(str(input("Ending file name: ")), 'r') as source1 :
+  file2 = source1.read()
+  print(file2)
 

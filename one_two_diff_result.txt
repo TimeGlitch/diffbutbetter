@@ -1,0 +1,39 @@
+2c2
+< TOOL:	irun(64)	15.20-s010: Started on Oct 30, 2016 at 14:15:36 PDT
+---
+> TOOL:	irun(64)	15.20-s010: Started on Nov 01, 2016 at 14:51:02 PDT
+14,15c14
+< 		-define EFUSE_AMS
+< 		-spectre_args "+mts +diagnose"
+---
+> 		-spectre_args +mts
+16a16
+> 		-incdir /projects/example1/members/user1/dfII/
+25c25
+< 		-amspartinfo /simulated/machine-23/projects/example1/members/user1/example1_sim/tb_example1_example2_AA/ams/config/distributed/job001/psf/partition.info
+---
+> 		-amspartinfo /simulated/machine-02/projects/example1/members/user1/dfII/simulation/example1_AA_sim/tb_example1/ams/config_cell1/distributed/job/psf/partition.info
+27c27
+< 		-modelincdir /projects/example1/members/user1/dfII/:/cad/lib/pdk/process/rev2.1/cds/spectre/processg/multiplelib
+---
+> 		-modelincdir /projects/example1/members/user1/dfII/:/cad/lib/pdk/process/shared/models/spectre/processg/multiplelib
+31c31
+< 		-input "@source /projects/example1/members/user1/dfII/../verification/testbenchTS/common.tcl; source /projects/example1/members/user1/dfII/../verification/testbenchTS/testcase_A2.tcl"
+---
+> 		-input "@source /projects/example1/members/user1/dfII/../verification/common.tcl; source /projects/example1/members/user1/dfII/../verification/testcase_A1.tcl"
+33,35c33,35
+< 		-mpssession virtuoso27777
+< 		-mpshost machine-23
+< 		-ncsimargs "+amsrawdir /simulated/machine-23/projects/example1/members/user1/example1_sim/tb_example1_example2_AA/ams/config/distributed/job001/psf"
+---
+> 		-mpssession virtuoso14736
+> 		-mpshost machine-02
+> 		-ncsimargs "+amsrawdir /simulated/machine-02/projects/example1/members/user1/dfII/simulation/example1_AA_sim/tb_example1/ams/config_cell1/distributed/job/psf"
+37c37
+< 		-name example1_sim.tb_example1_example2_AA:config
+---
+> 		-name example1_AA_sim.tb_example1:config_cell1
+47a48,49
+> 		-f /projects/example1/members/user1/dfII/../verification/options.f
+> 			-access rwc
+\ No newline at end of file
