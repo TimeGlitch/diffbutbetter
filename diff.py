@@ -313,3 +313,4 @@ with open(file2name, 'r') as source :
 output = "testing testing"
 with open(file1name + " and " + file2name + " diff", 'x') as outfile :
   outfile.write(output)
+#separate number then compare
