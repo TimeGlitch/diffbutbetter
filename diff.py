@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from bisect import bisect
 import difflib
 
+import re
 
 class MaxRecursionDepth(Exception):
 
@@ -243,7 +244,7 @@ class PatienceSequenceMatcher_py(difflib.SequenceMatcher):
 def unified_diff(a, b, fromfile='', tofile='', fromfiledate='',
                  tofiledate='', n=3, lineterm='\n',
                  sequencematcher=None):
-    r"""
+    """
     Compare two sequences of lines; generate the delta as a unified diff.
 
     Unified diffs are a compact way of showing line changes and a few
@@ -409,9 +410,8 @@ with open(file2name, 'r') as source :
   file2 = source.readlines()
   print(file2)
 
-#output = "testing testing"
-#with open(file1name + " and " + file2name + " diff", 'x') as outfile :
-#  outfile.write(output)
+output = "".join(unified_diff(file1,file2))
+with open(file1name + " and " + file2name + " diff", 'x') as outfile :
+  outfile.write(output)
 #separate number then compare
 
-print ("".join(unified_diff(file1,file2)))
