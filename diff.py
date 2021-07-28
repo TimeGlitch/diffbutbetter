@@ -357,7 +357,7 @@ def lcssimple(text1,  text2):
 #  Returns a minimal list of differences between 2 lists e and f
 #  requring O(min(len(e),len(f))) space and O(min(len(e),len(f)) * D)
 #  worst-case execution time where D is the number of differences.
-def minimaldiff(e, f, i=0, j=0):
+def diff(e, f, i=0, j=0):
   #  Documented at http://blog.robertelder.org/diff-algorithm/
   N,M,L,Z = len(e),len(f),len(e)+len(f),2*min(len(e),len(f))+2
   if N > 0 and M > 0:
@@ -453,7 +453,18 @@ print("numbers put back in:")
 numberreplacer(file1, numbers1)
 print(file1)
 
-output = minimaldiff(file1,file2)
+changes = diff(file1,file2)
+output = ""
+for change in changes:
+    if(change["operation"] == "delete"):
+        output = output + str(change["position_old"]) + "d\n"
+        output = output + str(file1[change["position_old"]]) + "\n"
+    else:
+        output = output + str(change["position_old"]) + "a" + str(change["position_new"]) + "\n"
+        output = output + str(file2[change["position_new"]]) + "\n"
+
+    output = output + "---\n"
+print(output)
 with open(file1name + " and " + file2name + " diff " +  datetime.now().strftime("%d %m %Y %H %M %S"), 'x') as outfile :
   outfile.write(output)
 #separate number then compare
