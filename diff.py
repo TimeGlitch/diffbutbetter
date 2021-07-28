@@ -7,6 +7,8 @@ import difflib
 
 import re
 
+from datetime import datetime
+
 class MaxRecursionDepth(Exception):
 
     def __init__(self):
@@ -394,24 +396,66 @@ def testing():
 def equals(c1, c2):
 
     return c1 == c2
-#print(lcssimple("yeehaw", "yeea"))
+
+def numberseparator(filelines):
+    i = 0
+    out = []
+    r = re.compile('\d+')
+    for line in filelines:
+        #re.findall(r'\b\d+\b', line)
+        #print(i)
+        #print(line)
+        #print(re.findall(r'\d+', line))
+
+        out.append(r.findall( line))
+        filelines[i] = r.sub("numbersubstitute",line)
+        out[i].append("")
+        i = i + 1
+    return out
+
+def numberreplacer(filelines, numbers):
+    i = 0
+    r = re.compile('numbersubstitute')
+    for line in filelines:
+        print("Line Number: " + str(i))
+        print(line)
+        print(numbers[i])
+        filelines[i] = r.sub(numbers[i].pop(0) ,line)
+        i = i + 1
+
+def numberreplacerhelper(numbers,i):
+    print("called")
+    return numbers[i].pop(0)
+
 file1name = str(input("Starting file name: "))
 file2name =str(input("Ending file name: "))
 
-
 file1 = ""
 file2 = ""
+numbers1 = None
+number2 = None
+
 print("---file1---")
 with open(file1name, 'r') as source :
   file1 = source.readlines()
-  print(file1)
+  print(file1) #temp
 print("---file2---")
 with open(file2name, 'r') as source :
   file2 = source.readlines()
-  print(file2)
+  #print(file2)
 
-output = "".join(unified_diff(file1,file2))
-with open(file1name + " and " + file2name + " diff", 'x') as outfile :
+numbers1 = numberseparator(file1)
+numbers2 = numberseparator(file2)
+print("numbers taken out:")
+print(file1)
+
+print("numbers put back in:")
+numberreplacer(file1, numbers1)
+print(file1)
+
+output = minimaldiff(file1,file2)
+with open(file1name + " and " + file2name + " diff " +  datetime.now().strftime("%d %m %Y %H %M %S"), 'x') as outfile :
   outfile.write(output)
 #separate number then compare
 
+#re.findall(r'\b\d+\b', 'input test 69')

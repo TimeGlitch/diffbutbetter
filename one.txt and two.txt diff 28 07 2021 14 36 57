@@ -1,0 +1,52 @@
+--- 
++++ 
+@@ -1,5 +1,5 @@
+ irun(numbersubstitute): numbersubstitute.numbersubstitute-snumbersubstitute: (c) Copyright numbersubstitute-numbersubstitute Cadence Design Systems, Inc.
+-TOOL:	irun(numbersubstitute)	numbersubstitute.numbersubstitute-snumbersubstitute: Started on Oct numbersubstitute, numbersubstitute at numbersubstitute:numbersubstitute:numbersubstitute PDT
++TOOL:	irun(numbersubstitute)	numbersubstitute.numbersubstitute-snumbersubstitute: Started on Nov numbersubstitute, numbersubstitute at numbersubstitute:numbersubstitute:numbersubstitute PDT
+ irun
+ 	-f irunArgs
+ 		-UNBUFFERED
+@@ -11,9 +11,9 @@
+ 		-licqueue
+ 		-spectre_args "+lqtimeout numbersubstitute"
+ 		-uselicense MMSIML:MMSIM:IMMSIM:IAMSOPT:DEFAULT
+-		-define EFUSE_AMS
+-		-spectre_args "+mts +diagnose"
++		-spectre_args +mts
+ 		-vnumbersubstitute
++		-incdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/
+ 		-timescale numbersubstitutens/numbersubstitutens
+ 		-vtimescale numbersubstitutens/numbersubstitutens
+ 		-discipline logic
+@@ -22,19 +22,19 @@
+ 		-novitalaccl
+ 		-access r
+ 		-noparamerr
+-		-amspartinfo /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/examplenumbersubstitute_sim/tb_examplenumbersubstitute_examplenumbersubstitute_AA/ams/config/distributed/jobnumbersubstitute/psf/partition.info
++		-amspartinfo /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/simulation/examplenumbersubstitute_AA_sim/tb_examplenumbersubstitute/ams/config_cellnumbersubstitute/distributed/job/psf/partition.info
+ 		-rnm_partinfo
+-		-modelincdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/:/cad/lib/pdk/process/revnumbersubstitute.numbersubstitute/cds/spectre/processg/multiplelib
++		-modelincdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/:/cad/lib/pdk/process/shared/models/spectre/processg/multiplelib
+ 		./spiceModels.scs
+ 		./amsControlSpectre.scs
+ 		-input ./probe.tcl
+-		-input "@source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testbenchTS/common.tcl; source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testbenchTS/testcase_Anumbersubstitute.tcl"
++		-input "@source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/common.tcl; source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testcase_Anumbersubstitute.tcl"
+ 		-gui
+ 		-mpssession virtuosonumbersubstitute
+ 		-mpshost machine-numbersubstitute
+-		-ncsimargs "+amsrawdir /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/examplenumbersubstitute_sim/tb_examplenumbersubstitute_examplenumbersubstitute_AA/ams/config/distributed/jobnumbersubstitute/psf"
++		-ncsimargs "+amsrawdir /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/simulation/examplenumbersubstitute_AA_sim/tb_examplenumbersubstitute/ams/config_cellnumbersubstitute/distributed/job/psf"
+ 		-simcompatible_ams spectre
+-		-name examplenumbersubstitute_sim.tb_examplenumbersubstitute_examplenumbersubstitute_AA:config
++		-name examplenumbersubstitute_AA_sim.tb_examplenumbersubstitute:config_cellnumbersubstitute
+ 		-amsconnrules ConnRules_ms_full
+ 		+define+CDS_SELECT_CRS
+ 		+define+CONNRULES_MS_FULL
+@@ -45,3 +45,5 @@
+ 		/cad/lib/pdk/generic_oa/revnumbersubstitute.numbersubstitute/connectlib_src/ms_connectlib/../EnumbersubstituteR_ms.vams
+ 		/cad/lib/pdk/generic_oa/revnumbersubstitute.numbersubstitute/connectlib_src/ms_connectlib/../RnumbersubstituteE_ms.vams
+ 		/cad/lib/pdk/generic_oa/revnumbersubstitute.numbersubstitute/connectlib_src/ms_connectlib/../ER_bidir_ms.vams
++		-f /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/options.f
++			-access rwc
