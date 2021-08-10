@@ -387,11 +387,23 @@ def diff(e, f, i=0, j=0):
   else:
     return [{"operation": "insert", "position_old": i,"position_new":j+n} for n in range(0,M)]
 
-def patiencediff(text1, text2):
-  print("WIP")
+def apply_edit_script(edit_script, s1, s2):
+  i, new_sequence = 0, []
+  for e in edit_script:
+    while e["position_old"] > i:
+      new_sequence.append(s1[i])
+      i = i + 1
+    if e["position_old"] == i:
+      if e["operation"] == "delete":
+        i = i + 1
+      elif e["operation"] == "insert":
+        new_sequence.append(s2[e["position_new"]])
+  while i < len(s1):
+    new_sequence.append(s1[i])
+    i = i + 1
+  return new_sequence
 
-def testing():
-    print("yep")
+
 
 def equals(c1, c2):
 
@@ -427,6 +439,13 @@ def numberreplacerhelper(numbers,i):
     print("called")
     return numbers[i].pop(0)
 
+def combinechangesequences(original, added):
+    i = 0
+    for change in added:
+        while change["position_old"] <= original["position_old"] or i == original.size(): #what is the funciton to find the size of an array in python b/c its probably not .size()
+            i += 1
+        original.insert(change, i) #check syntax for insert function
+
 file1name = str(input("Starting file name: "))
 file2name =str(input("Ending file name: "))
 
@@ -438,7 +457,7 @@ number2 = None
 print("---file1---")
 with open(file1name, 'r') as source :
   file1 = source.readlines()
-  print(file1) #temp
+  #print(file1) #temp
 print("---file2---")
 with open(file2name, 'r') as source :
   file2 = source.readlines()
@@ -446,14 +465,34 @@ with open(file2name, 'r') as source :
 
 numbers1 = numberseparator(file1)
 numbers2 = numberseparator(file2)
-print("numbers taken out:")
-print(file1)
+#print("numbers taken out:")
+#print(file1)
 
-print("numbers put back in:")
-numberreplacer(file1, numbers1)
-print(file1)
+#print("numbers put back in:")
+#numberreplacer(file1, numbers1)
+#print(file1)
 
 changes = diff(file1,file2)
+print(changes)
+
+newsequence = apply_edit_script(changes, numbers1, numbers2)
+"""
+print("original")
+print(numbers1)
+print("changed sequence:")
+print(newsequence)
+print("final")
+print(numbers2)
+"""
+filterednewsequence = []
+
+i = 0
+for line in newsequence:
+    if line != numbers2[i]:
+        filterednewsequence.append({'operation': 'delete', 'position_old': i})
+        filterednewsequence.append({'operation': 'insert', 'position_old': i + 1, 'position_new': i})
+    i = i + 1
+
 output = ""
 for change in changes:
     if(change["operation"] == "delete"):
