@@ -1,0 +1,87 @@
+1d
+TOOL:	irun(numbersubstitute)	numbersubstitute.numbersubstitute-snumbersubstitute: Started on Oct numbersubstitute, numbersubstitute at numbersubstitute:numbersubstitute:numbersubstitute PDT
+
+---
+2a1
+TOOL:	irun(numbersubstitute)	numbersubstitute.numbersubstitute-snumbersubstitute: Started on Nov numbersubstitute, numbersubstitute at numbersubstitute:numbersubstitute:numbersubstitute PDT
+
+---
+13a13
+		-spectre_args +mts
+
+---
+13d
+		-define EFUSE_AMS
+
+---
+14d
+		-spectre_args "+mts +diagnose"
+
+---
+16a15
+		-incdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/
+
+---
+24d
+		-amspartinfo /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/examplenumbersubstitute_sim/tb_examplenumbersubstitute_examplenumbersubstitute_AA/ams/config/distributed/jobnumbersubstitute/psf/partition.info
+
+---
+25a24
+		-amspartinfo /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/simulation/examplenumbersubstitute_AA_sim/tb_examplenumbersubstitute/ams/config_cellnumbersubstitute/distributed/job/psf/partition.info
+
+---
+26d
+		-modelincdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/:/cad/lib/pdk/process/revnumbersubstitute.numbersubstitute/cds/spectre/processg/multiplelib
+
+---
+27a26
+		-modelincdir /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/:/cad/lib/pdk/process/shared/models/spectre/processg/multiplelib
+
+---
+30a30
+		-input "@source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/common.tcl; source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testcase_Anumbersubstitute.tcl"
+
+---
+30d
+		-input "@source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testbenchTS/common.tcl; source /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/testbenchTS/testcase_Anumbersubstitute.tcl"
+
+---
+32d
+		-mpssession virtuosonumbersubstitute
+
+---
+33a32
+		-mpssession virtuosonumbersubstitute
+
+---
+33d
+		-mpshost machine-numbersubstitute
+
+---
+34d
+		-ncsimargs "+amsrawdir /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/examplenumbersubstitute_sim/tb_examplenumbersubstitute_examplenumbersubstitute_AA/ams/config/distributed/jobnumbersubstitute/psf"
+
+---
+34a33
+		-mpshost machine-numbersubstitute
+
+---
+35a34
+		-ncsimargs "+amsrawdir /simulated/machine-numbersubstitute/projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/simulation/examplenumbersubstitute_AA_sim/tb_examplenumbersubstitute/ams/config_cellnumbersubstitute/distributed/job/psf"
+
+---
+36d
+		-name examplenumbersubstitute_sim.tb_examplenumbersubstitute_examplenumbersubstitute_AA:config
+
+---
+37a36
+		-name examplenumbersubstitute_AA_sim.tb_examplenumbersubstitute:config_cellnumbersubstitute
+
+---
+47a47
+		-f /projects/examplenumbersubstitute/members/usernumbersubstitute/dfII/../verification/options.f
+
+---
+47a48
+			-access rwc
+---

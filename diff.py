@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 from bisect import bisect
 import difflib
+from os import write
 
 import re
 
@@ -441,10 +442,11 @@ def numberreplacerhelper(numbers,i):
 
 def combinechangesequences(original, added):
     i = 0
-    for change in added:
-        while change["position_old"] <= original[i]["position_old"] or i == len(original):
-            i += 1
-        original.insert(i, change)
+    for addedchange in added:
+        while addedchange["position_old"] >= original[i]["position_old"] and i != len(original):
+            i = i + 1
+        
+        original.insert(i, addedchange)
 
 file1name = str(input("Starting file name: "))
 file2name =str(input("Ending file name: "))
@@ -484,27 +486,35 @@ print(numbers2)
 """
 filterednewsequence = []
 
+
+
 i = 0
 for line in newsequence:
     if line != numbers2[i]:
         filterednewsequence.append({'operation': 'delete', 'position_old': i})
         filterednewsequence.append({'operation': 'insert', 'position_old': i + 1, 'position_new': i})
     i = i + 1
+
 combinechangesequences(changes, filterednewsequence)
 
-output = ""
-for change in changes:
-    if(change["operation"] == "delete"):
-        output = output + str(change["position_old"]) + "d\n"
-        output = output + str(file1[change["position_old"]]) + "\n"
-    else:
-        output = output + str(change["position_old"]) + "a" + str(change["position_new"]) + "\n"
-        output = output + str(file2[change["position_new"]]) + "\n"
+print(changes) #testing
 
-    output = output + "---\n"
-print(output)
-with open(file1name + " and " + file2name + " diff " +  datetime.now().strftime("%d %m %Y %H %M %S"), 'x') as outfile :
-  outfile.write(output)
+def writefilefromchanges(changes,file1name,file2name):
+    output = ""
+    for change in changes:
+        if(change["operation"] == "delete"):
+            output = output + str(change["position_old"]) + "d\n"
+            output = output + str(file1[change["position_old"]]) + "\n"
+        else:
+            output = output + str(change["position_old"]) + "a" + str(change["position_new"]) + "\n"
+            output = output + str(file2[change["position_new"]]) + "\n"
+
+        output = output + "---\n"
+    print(output)
+    with open(file1name + " and " + file2name + " diff " +  datetime.now().strftime("%d %m %Y %H %M %S"), 'x') as outfile :
+        outfile.write(output)
+writefilefromchanges(changes, file1name, file2name)
+
 #separate number then compare
 
 #re.findall(r'\b\d+\b', 'input test 69')
