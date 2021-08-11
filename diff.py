@@ -440,16 +440,32 @@ def numberreplacerhelper(numbers,i):
     print("called")
     return numbers[i].pop(0)
 
+def equals(numbers1, numbers2, percentage):
+    if len(numbers1) != len(numbers2):
+        return False
+    else:
+        for i in range(len(numbers1)):
+            if float(numbers1[i])/float(numbers2[i]) > percentage:
+                return False
+            
+
+
 def combinechangesequences(original, added):
     i = 0
     for addedchange in added:
         while addedchange["position_old"] >= original[i]["position_old"] and i != len(original):
             i = i + 1
-        
         original.insert(i, addedchange)
+
+def reducechanges(changes):
+    output[]
+    for change in changes:
+
 
 file1name = str(input("Starting file name: "))
 file2name =str(input("Ending file name: "))
+offbydecimal = float(input("Difference percentage")) + 0.001
+
 
 file1 = ""
 file2 = ""
@@ -515,6 +531,4 @@ def writefilefromchanges(changes,file1name,file2name):
         outfile.write(output)
 writefilefromchanges(changes, file1name, file2name)
 
-#separate number then compare
 
-#re.findall(r'\b\d+\b', 'input test 69')
