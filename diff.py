@@ -442,9 +442,9 @@ def numberreplacerhelper(numbers,i):
 def combinechangesequences(original, added):
     i = 0
     for change in added:
-        while change["position_old"] <= original["position_old"] or i == original.size(): #what is the funciton to find the size of an array in python b/c its probably not .size()
+        while change["position_old"] <= original[i]["position_old"] or i == len(original):
             i += 1
-        original.insert(change, i) #check syntax for insert function
+        original.insert(i, change)
 
 file1name = str(input("Starting file name: "))
 file2name =str(input("Ending file name: "))
@@ -454,11 +454,9 @@ file2 = ""
 numbers1 = None
 number2 = None
 
-print("---file1---")
 with open(file1name, 'r') as source :
   file1 = source.readlines()
   #print(file1) #temp
-print("---file2---")
 with open(file2name, 'r') as source :
   file2 = source.readlines()
   #print(file2)
@@ -492,6 +490,7 @@ for line in newsequence:
         filterednewsequence.append({'operation': 'delete', 'position_old': i})
         filterednewsequence.append({'operation': 'insert', 'position_old': i + 1, 'position_new': i})
     i = i + 1
+combinechangesequences(changes, filterednewsequence)
 
 output = ""
 for change in changes:
